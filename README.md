@@ -14,16 +14,15 @@ Dependencies: Theano, Lasagne
           ... 
           return X
    ```
-   
-   2. Modify the model loading procedure in load_model function at ./lib/utils.py.
+   and modify the model loading procedure in ```load_model``` function at ./lib/utils.py.
 
-   3. Modify the data loading procedure at ./lib/utils.py (e.g. load_mnist), including validation/training split. Or for loading another dataset.
+   2. Modify the data loading procedure at ./lib/utils.py (e.g. load_mnist), including validation/training split. Or for loading another dataset.
 
-   4. If you're evaluating your model on a dataset other than MNIST, you need to modify the data dimension in ./sampling/sampler.py, at line 19 and 20, and modify the procedure of calculating data likelihood at line 113 and 117. An example can be found at ./sampling/svhn_sampler.py 
+   3. If you're evaluating your model on a dataset other than MNIST, you need to modify the data dimension in ./sampling/sampler.py, at line 19 and 20, and modify the procedure of calculating data likelihood at line 113 and 117. An example can be found at ./sampling/svhn_sampler.py 
 
-   5. Various command instruction can be found at comment after the command.
+   4. Various command instruction can be found at comment after the command.
 
-   6. Run function ```main(*args)``` in ./experiment/run.py
+   5. Run function ```main(*args)``` in ./experiment/run.py
     
     
 
