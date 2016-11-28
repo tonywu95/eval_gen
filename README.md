@@ -15,8 +15,6 @@ Dependencies: Theano, Lasagne
           return X
    ```
    
-   Examples of a decoder can be found in nn.py: e.g., ```gan_gen_net10()```.
-    
    2. Modify the model loading procedure in load_model function at ./lib/utils.py.
 
    3. Modify the data loading procedure at ./lib/utils.py (e.g. load_mnist), including validation/training split. Or for loading another dataset.
