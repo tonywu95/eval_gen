@@ -7,14 +7,15 @@ Dependencies: Theano, Lasagne
 
    To evaluate a decoder-based generative model:
    1. You need to provide your decoder ```gen``` in the form of a python function, 
-   which takes in a theano tensor variable Z (latent) and outputs a theano tensor variable X (the sample).
+   which takes in a theano tensor variable Z (latent) and outputs a theano tensor variable X (the sample)
+   (an example can be found in line 84-85 in ./lib/utils.py),
    
    ```python
         def gen(Z):
           ... 
           return X
    ```
-   and modify the model loading procedure in ```load_model``` function at ./lib/utils.py.
+   and modify the model loading procedure in ```load_model``` function at ./lib/utils.py. 
 
    2. Modify the data loading procedure at ./lib/utils.py (e.g. load_mnist), including validation/training split. Or for loading another dataset.
 

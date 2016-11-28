@@ -68,8 +68,9 @@ def load_simulated(directory_name):
        
     return X_test,exact_h
 
-            
+         
 def load_model(model_type,aux):
+    #load_model returns a generator, which is a python function that takes a input (latent variable) and returns a sample.
 
     if model_type == 'gan10':
         gen = gan_gen_net10()
@@ -80,8 +81,8 @@ def load_model(model_type,aux):
         with open(filename, 'r') as f:
             data = pickle.load(f)
         lasagne.layers.set_all_param_values(gen, data)
-        def generator(x):
-            return lasagne.layers.get_output(gen,x)
+        def generator(z):
+            return lasagne.layers.get_output(gen,z)
         return None, generator
 
 
@@ -95,8 +96,8 @@ def load_model(model_type,aux):
         with open(filename, 'r') as f:
             data = pickle.load(f)
         lasagne.layers.set_all_param_values(gen, data)
-        def generator(x):
-            return lasagne.layers.get_output(gen,x)
+        def generator(z):
+            return lasagne.layers.get_output(gen,z)
         return None, generator
 
 
@@ -119,8 +120,8 @@ def load_model(model_type,aux):
     elif model_type == 'gmmn50':
         file_name='/ais/gobi4/ywu/gmmn/mnist/input_space/nhids_50_1024_1024_1024_sigma_2_5_10_20_40_80_lr_0.5_m_0.9/checkpoint_'+str(aux)
         params = np.load(file_name+'.npy')  
-        def generator(x):
-            y = x
+        def generator(z):
+            y = z
             for k in range(4):
                 y = T.dot(y,params[k][0].astype('float32')) + params[k][1].astype('float32')
                 if k==3:
@@ -146,8 +147,8 @@ def load_model(model_type,aux):
         with open(filename, 'r') as f:
             data = pickle.load(f)
         lasagne.layers.set_all_param_values(gen, data)
-        def generator(x):
-            return lasagne.layers.get_output(gen,x)[:,:784]
+        def generator(z):
+            return lasagne.layers.get_output(gen,z)[:,:784]
         return None, generator
  
 
@@ -176,8 +177,8 @@ def load_model(model_type,aux):
             data = pickle.load(f)
         data = data[:-1]
         lasagne.layers.set_all_param_values(gen, data)
-        def generator(x):
-            return lasagne.layers.get_output(gen,x)
+        def generator(z):
+            return lasagne.layers.get_output(gen,z)
         return None, generator
 
 
@@ -185,8 +186,8 @@ def load_model(model_type,aux):
         file_name = "/ais/gobi4/ywu/iwae_results_Yura/BinFixMNISTl1iwaek"+aux
         model =  exp.load_checkpoint(file_name,8)[1]
         params = [p.get_value() for p in model.p_layers[0].mean_network.params]
-        def generator(x):
-            y = x
+        def generator(z):
+            y = z
             k = 0
             for i in range(3):
                 y = T.dot(y,params[k].astype('float32')) + params[k+1].astype('float32')
