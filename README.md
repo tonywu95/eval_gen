@@ -33,7 +33,7 @@ Dependencies: Theano, Lasagne
    2. Run function ```main(*args)``` in ./experiment/run.py, with ```plot_posterior``` set to 1.
    3. For visualizing the posterior samples of a particular digit X, set exps to "postXtra" for digit in training set and "postXval" for digit in validation set.
 
-
+See an tensorflow implementation: https://github.com/jiamings/ais
  
 
 
